@@ -1,13 +1,9 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
-#ifndef RENDERER_RESOURCEMANAGER_H
-#define RENDERER_RESOURCEMANAGER_H
+#pragma once
 
 #include <map>
 #include <string>
 #include <glad/glad.h>
+
 #include "stb_image.h"
 #include "Shader.h"
 #include "Texture2D.h"

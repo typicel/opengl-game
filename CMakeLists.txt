@@ -19,7 +19,11 @@ add_executable(renderer main.cpp
         ResourceManager.cpp
         include/ResourceManager.h
         include/ResourceManager.h
-        ResourceManager.cpp)
+        ResourceManager.cpp
+        Entity.cpp
+        include/Entity.h
+        Game.cpp
+        include/Game.h)
 
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glad REQUIRED)

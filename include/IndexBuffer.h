@@ -1,10 +1,4 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
-#ifndef RENDERER_INDEXBUFFER_H
-#define RENDERER_INDEXBUFFER_H
-
+#pragma once
 
 #include <cstdint>
 #include "glad/glad.h"
@@ -21,6 +15,3 @@ private:
     uint32_t m_indexBufferId;
     uint32_t m_Count;
 };
-
-
-#endif //RENDERER_INDEXBUFFER_H

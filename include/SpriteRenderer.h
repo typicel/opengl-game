@@ -1,9 +1,4 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
-#ifndef RENDERER_SPRITERENDERER_H
-#define RENDERER_SPRITERENDERER_H
+#pragma once
 
 #include "Shader.h"
 #include "Texture2D.h"

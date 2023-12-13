@@ -1,9 +1,4 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
-#ifndef RENDERER_VERTEXBUFFER_H
-#define RENDERER_VERTEXBUFFER_H
+#pragma once
 
 #include <cstdint>
 #include "glad/glad.h"
@@ -19,6 +14,3 @@ public:
 private:
     uint32_t m_vertexBufferId;
 };
-
-
-#endif //RENDERER_VERTEXBUFFER_H

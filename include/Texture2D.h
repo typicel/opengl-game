@@ -1,9 +1,4 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
-#ifndef RENDERER_TEXTURE2D_H
-#define RENDERER_TEXTURE2D_H
+#pragma once
 
 #include <cstdint>
 

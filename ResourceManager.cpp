@@ -1,7 +1,3 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
 #include "include/ResourceManager.h"
 #include <iostream>
 #include <fstream>

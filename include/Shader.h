@@ -1,9 +1,4 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
-#ifndef RENDERER_SHADER_H
-#define RENDERER_SHADER_H
+#pragma once
 
 #include <cstdint>
 #include "glm/glm.hpp"
@@ -24,6 +19,3 @@ public:
     void Use() const;
 
 };
-
-
-#endif //RENDERER_SHADER_H

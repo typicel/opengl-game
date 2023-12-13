@@ -1,6 +1,3 @@
-//
-// Created by tyler on 12/11/2023.
-//
 #pragma once
 
 #include <iostream>
@@ -9,15 +6,12 @@
     x;\
     ASSERT(GLLogCall())
 
-static void GLClearError()
-{
+static void GLClearError() {
     while(glGetError() != GL_NO_ERROR);
 }
 
-static bool GLLogCall()
-{
-    while(GLenum error = glGetError())
-    {
+static bool GLLogCall() {
+    while(GLenum error = glGetError()) {
         std::cout << "Error code" << std::endl;
         return false;
     }

@@ -1,7 +1,3 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
 #include "include/Texture2D.h"
 #include <glad/glad.h>
 #include "include/Errors.h"
@@ -12,8 +8,7 @@ Texture2D::Texture2D()
     GLCall(glGenTextures(1, &this->ID));
 }
 
-void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char *data)
-{
+void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char *data) {
     this->Width = width;
     this->Height = height;
 
@@ -28,7 +23,6 @@ void Texture2D::Generate(unsigned int width, unsigned int height, unsigned char 
     GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 }
 
-void Texture2D::Bind() const
-{
+void Texture2D::Bind() const {
     GLCall(glBindTexture(GL_TEXTURE_2D, this->ID));
 }

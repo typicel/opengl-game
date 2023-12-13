@@ -1,7 +1,3 @@
-//
-// Created by tyler on 12/11/2023.
-//
-
 #include "include/IndexBuffer.h"
 
 IndexBuffer::IndexBuffer(const uint32_t* data, const uint32_t count) {
