@@ -24,5 +24,3 @@ private:
     static Texture2D loadTextureFromPath(const char* texturePath, bool alpha);
 };
 
-
-#endif //RENDERER_RESOURCEMANAGER_H

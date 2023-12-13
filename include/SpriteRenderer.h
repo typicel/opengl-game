@@ -18,5 +18,3 @@ private:
     void initRenderData();
 };
 
-
-#endif //RENDERER_SPRITERENDERER_H

@@ -23,7 +23,9 @@ add_executable(renderer main.cpp
         Entity.cpp
         include/Entity.h
         Game.cpp
-        include/Game.h)
+        include/Game.h
+        InputManager.cpp
+        include/InputManager.h)
 
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glad REQUIRED)

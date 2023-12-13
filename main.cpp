@@ -20,7 +20,7 @@ int main() {
     glfwMakeContextCurrent(window);
     gladLoadGL();
 
-    Game game(WIDTH, HEIGHT);
+    Game game(WIDTH, HEIGHT, window);
     while(!glfwWindowShouldClose(window)) {
         GLCall(glClearColor(0.2f, 0.3f, 0.3f, 1.0f));
         GLCall(glClear(GL_COLOR_BUFFER_BIT));

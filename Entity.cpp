@@ -10,4 +10,7 @@ void Entity::Draw(SpriteRenderer *renderer) {
     renderer->DrawSprite(this->Sprite, this->Position, this->Size, this->Rotation, this->Color);
 }
 
+void Entity::Move(glm::vec2 value) {
+    this->Position += value;
+}
 

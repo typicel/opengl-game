@@ -21,5 +21,3 @@ public:
 
 };
 
-
-#endif //RENDERER_TEXTURE2D_H
