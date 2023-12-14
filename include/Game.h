@@ -18,7 +18,7 @@ public:
     void Update();
 
 private:
-    b2World* world =  new b2World(b2Vec2(0.f, -10.f));
+    b2World world;
 
     InputManager* Input;
     GLFWwindow* m_Window;

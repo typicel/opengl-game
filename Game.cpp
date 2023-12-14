@@ -3,18 +3,20 @@
 #include "include/Game.h"
 #include "include/ResourceManager.h"
 
-Game::Game(int width, int height, GLFWwindow* window) : m_Window(window) {
+Game::Game(int width, int height, GLFWwindow* window) : m_Window(window), world(b2Vec2(0.f, 10.f)) {
     // Load shader for SpriteRenderer
     this->m_Renderer = std::make_shared<SpriteRenderer>(
             "C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.vert",
             "C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.frag"
     );
 
-    this->world = new b2World(b2Vec2(0.f, 10.f));
     // Load all game entities
     Texture2D nugget_texture = ResourceManager::LoadTexture("C:/Users/tyler/Projects/renderer/Assets/Sprites/nugglet.png", "nugglet", true);
-    auto nugget = new Entity(this->world, glm::vec2(200.0f, 200.0f), glm::vec2(300.0f, 300.0f), nugget_texture, glm::vec3(1.f, 0.f, 0.f));
+    auto nugget = new Entity(world, glm::vec2(200.0f, 50.0f), glm::vec2(50.0f, 50.0f), nugget_texture, false,glm::vec3(1.f, 0.f, 0.f));
     this->m_Entities.push_back(nugget);
+
+    auto floor = new Entity(world, glm::vec2(0.0f, 500.f), glm::vec2(1200.f, 100.f), nugget_texture, true, glm::vec3(0.5f, 0.5f, 0.5f));
+    this->m_Entities.push_back(floor);
 
     InputManager::setupKeyInputs(m_Window);
     this->Input = new InputManager(std::vector<int> {GLFW_KEY_ESCAPE, GLFW_KEY_D, GLFW_KEY_S, GLFW_KEY_A, GLFW_KEY_W});
@@ -42,7 +44,7 @@ void Game::Render() {
     int32_t velocityIterations = 6;
     int32_t positionIterations = 6;
 
-    this->world->Step(timeStep, velocityIterations, positionIterations);
+    this->world.Step(timeStep, velocityIterations, positionIterations);
 
     // Render all entities on the screen, do other stuff here too, like handle input and such
     for(auto entity: m_Entities) {
