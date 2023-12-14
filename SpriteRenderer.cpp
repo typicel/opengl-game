@@ -1,7 +1,13 @@
 #include "include/SpriteRenderer.h"
 #include "include/Errors.h"
 
-SpriteRenderer::SpriteRenderer(Shader& shader) : shader(shader) {
+SpriteRenderer::SpriteRenderer(const char* vShaderFile, const char* fShaderFile) {
+    this->shader = ResourceManager::LoadShader(vShaderFile, fShaderFile, "sprite_shader");
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(800), static_cast<float>(600), 0.0f, -1.0f, 1.0f); // FIX THIS LATER IT SHOULD BE LIKE THE ACTUAL WIDTH AND HEIGHT
+    this->shader.Use();
+    this->shader.SetInteger("image", 0);
+    this->shader.SetMatrix4("projection", projection);
+
     this->initRenderData();
 }
 

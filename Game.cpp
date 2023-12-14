@@ -5,12 +5,10 @@
 
 Game::Game(int width, int height, GLFWwindow* window) : m_Window(window) {
     // Load shader for SpriteRenderer
-    Shader sprite_shader = ResourceManager::LoadShader("C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.vert", "C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.frag", "sprite_shader");
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f, -1.0f, 1.0f);
-    sprite_shader.Use();
-    sprite_shader.SetInteger("image", 0);
-    sprite_shader.SetMatrix4("projection", projection);
-    this->m_Renderer = std::make_shared<SpriteRenderer>(sprite_shader);
+    this->m_Renderer = std::make_shared<SpriteRenderer>(
+            "C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.vert",
+            "C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.frag"
+    );
 
     // Load all game entities
     Texture2D nugget_texture = ResourceManager::LoadTexture("C:/Users/tyler/Projects/renderer/Assets/Sprites/nugglet.png", "nugglet", true);
