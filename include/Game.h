@@ -4,6 +4,7 @@
 #include "SpriteRenderer.h"
 #include "InputManager.h"
 #include <glfw/glfw3.h>
+#include <box2d/b2_world.h>
 
 // std
 #include <vector>
@@ -17,8 +18,10 @@ public:
     void Update();
 
 private:
+    b2World* world =  new b2World(b2Vec2(0.f, -10.f));
+
     InputManager* Input;
     GLFWwindow* m_Window;
-    std::vector<std::shared_ptr<Entity>> m_Entities;
+    std::vector<Entity*> m_Entities;
     std::shared_ptr<SpriteRenderer> m_Renderer;
 };

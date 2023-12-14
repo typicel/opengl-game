@@ -30,7 +30,9 @@ add_executable(renderer main.cpp
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glad REQUIRED)
 find_package(glm CONFIG REQUIRED)
+find_package(box2d CONFIG REQUIRED)
 
 target_link_libraries(renderer PRIVATE glad::glad)
 target_link_libraries(renderer PRIVATE glfw)
 target_link_libraries(renderer PRIVATE glm::glm)
+target_link_libraries(renderer PRIVATE box2d::box2d)
