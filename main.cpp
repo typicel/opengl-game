@@ -7,7 +7,7 @@
 #include "include/stb_image.h"
 
 int main() {
-    int WIDTH = 800, HEIGHT= 600;
+    int WIDTH = 1920, HEIGHT= 1080;
     if(!glfwInit())
         return -1;
 

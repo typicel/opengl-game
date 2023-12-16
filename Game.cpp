@@ -7,7 +7,8 @@ Game::Game(int width, int height, GLFWwindow* window) : m_Window(window), world(
     // Load shader for SpriteRenderer
     this->m_Renderer = std::make_shared<SpriteRenderer>(
             "C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.vert",
-            "C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.frag"
+            "C:/Users/tyler/Projects/renderer/Assets/Shaders/sprite.frag",
+            width, height
     );
 
     // Load all game entities
@@ -46,11 +47,16 @@ void Game::Render() {
 
     this->world.Step(timeStep, velocityIterations, positionIterations);
 
+    m_debugDraw.DrawRectangle(200.f, 200.f, 100.f, 100.f);
     // Render all entities on the screen, do other stuff here too, like handle input and such
     for(auto entity: m_Entities) {
-        auto pos = entity->physicsBody->GetPosition();
-        entity->Position = glm::vec2(pos.x, pos.y);
+        m_Renderer->DrawSprite(*entity);
 
-        entity->Draw(m_Renderer.get());
+        b2AABB aabb = entity->physicsBody->GetFixtureList()->GetAABB(0);
+        float x = aabb.lowerBound.x;
+        float y = aabb.lowerBound.y;
+        float width = aabb.upperBound.x - aabb.lowerBound.x;
+        float height = aabb.upperBound.y - aabb.lowerBound.y;
+        m_debugDraw.DrawRectangle(x, y, width, height);
     }
 }

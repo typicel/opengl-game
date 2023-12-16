@@ -5,6 +5,7 @@
 #include "InputManager.h"
 #include <glfw/glfw3.h>
 #include <box2d/b2_world.h>
+#include "DebugDraw.h"
 
 // std
 #include <vector>
@@ -24,4 +25,6 @@ private:
     GLFWwindow* m_Window;
     std::vector<Entity*> m_Entities;
     std::shared_ptr<SpriteRenderer> m_Renderer;
+
+    DebugDraw m_debugDraw;
 };

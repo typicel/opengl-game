@@ -27,10 +27,6 @@ Entity::Entity(b2World& world, glm::vec2 pos, glm::vec2 size, Texture2D sprite, 
     physicsBody->CreateFixture(&fixtureDef);
 }
 
-void Entity::Draw(SpriteRenderer *renderer) {
-    renderer->DrawSprite(this->Sprite, this->Position, this->Size, this->Rotation, this->Color);
-}
-
 void Entity::Move(glm::vec2 value) {
     this->Position += value;
 }
