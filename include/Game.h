@@ -19,6 +19,7 @@ public:
     void Update();
 
 private:
+    int width, height;
     b2World world;
 
     InputManager* Input;

@@ -23,8 +23,13 @@ void SpriteRenderer::DrawSprite(const Entity &entity) {
     // The model matrix defines all transformations on this sprite
     // Should first translate, then rotate, then scale (reverse in code because multiplication is right -> left
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(body->GetPosition().x, body->GetPosition().y, 0.0f)); // Translate
-    model = glm::translate(model, glm::vec3(0.5f * entity.Size.x, 0.5f * entity.Size.y, 0.0f)); // so that movements occurs at center of sprite
+    float x = body->GetPosition().x - (entity.Size.x/2);
+    float y = body->GetPosition().y - (entity.Size.y/2);
+
+//    float x = body->GetPosition().x;
+//    float y = body->GetPosition().y;
+    model = glm::translate(model, glm::vec3(x, y, 0.0f)); // Translate
+    model = glm::translate(model, glm::vec3(0.5f * entity.Size.x, 0.5f * entity.Size.y, 0.0f)); // so that rotation occurs at center of sprite
     model = glm::rotate(model, glm::radians(body->GetTransform().q.GetAngle()), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate
     model = glm::translate(model, glm::vec3(-0.5f * entity.Size.x, -0.5f * entity.Size.y, 0.0f));
     model = glm::scale(model, glm::vec3(entity.Size, 1.0f)); // Scale

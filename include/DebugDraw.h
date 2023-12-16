@@ -7,7 +7,7 @@
 
 class DebugDraw {
 public:
-    DebugDraw();
+    DebugDraw(int width, int height);
     void DrawRectangle(float x, float y, float width, float height);
     void DrawLine(float pos, float len);
 

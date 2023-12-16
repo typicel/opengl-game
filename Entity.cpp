@@ -13,7 +13,7 @@ Entity::Entity(b2World& world, glm::vec2 pos, glm::vec2 size, Texture2D sprite, 
     else
         bodyDef.type = b2_dynamicBody;
 
-    bodyDef.position.Set(pos.x, pos.y);
+    bodyDef.position.Set(pos.x + (size.x/2), pos.y + (size.y/2));
     this->physicsBody = world.CreateBody(&bodyDef);
 
     b2PolygonShape dynamicBox;
