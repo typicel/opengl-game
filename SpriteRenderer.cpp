@@ -26,8 +26,6 @@ void SpriteRenderer::DrawSprite(const Entity &entity) {
     float x = body->GetPosition().x - (entity.Size.x/2);
     float y = body->GetPosition().y - (entity.Size.y/2);
 
-//    float x = body->GetPosition().x;
-//    float y = body->GetPosition().y;
     model = glm::translate(model, glm::vec3(x, y, 0.0f)); // Translate
     model = glm::translate(model, glm::vec3(0.5f * entity.Size.x, 0.5f * entity.Size.y, 0.0f)); // so that rotation occurs at center of sprite
     model = glm::rotate(model, body->GetAngle(), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotate

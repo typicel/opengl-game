@@ -4,11 +4,7 @@
 #include "include/VertexBuffer.h"
 
 DebugDraw::DebugDraw(int width, int height) {
-    this->debugShader = ResourceManager::LoadShader(
-            "C:/Users/tyler/Projects/renderer/Assets/Shaders/debug.vert",
-            "C:/Users/tyler/Projects/renderer/Assets/Shaders/debug.frag",
-            "debugShader"
-    );
+    this->debugShader = ResourceManager::LoadShader("debug.vert", "debug.frag", "debugShader");
 
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(width), static_cast<float>(height), 0.0f, -1.0f, 1.0f); // FIX THIS LATER IT SHOULD BE LIKE THE ACTUAL WIDTH AND HEIGHT
     this->debugShader.Use();

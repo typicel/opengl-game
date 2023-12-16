@@ -14,19 +14,19 @@ Texture2D ResourceManager::GetTexture(const std::string& name) {
     return m_Textures[name];
 }
 
-Shader ResourceManager::LoadShader(const char *vShaderPath, const char *fShaderPath, std::string name) {
+Shader ResourceManager::LoadShader(const std::string& vShaderPath, const std::string& fShaderPath, std::string name) {
     Shader shader = loadShaderFromPath(vShaderPath, fShaderPath);
     m_Shaders[name] = shader;
     return shader;
 }
 
-Texture2D ResourceManager::LoadTexture(const char *texturePath, std::string name, bool alpha) {
+Texture2D ResourceManager::LoadTexture(const std::string& texturePath, std::string name, bool alpha) {
     Texture2D texture = loadTextureFromPath(texturePath, alpha);
     m_Textures[name] = texture;
     return texture;
 }
 
-Texture2D ResourceManager::loadTextureFromPath(const char* texturePath, bool alpha)
+Texture2D ResourceManager::loadTextureFromPath(const std::string& texturePath, bool alpha)
 {
     Texture2D texture;
     if(alpha)
@@ -36,7 +36,7 @@ Texture2D ResourceManager::loadTextureFromPath(const char* texturePath, bool alp
     }
 
     int width, height, nrChannels;
-    unsigned char* data = stbi_load(texturePath, &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load(texturePath.c_str(), &width, &height, &nrChannels, 0);
     texture.Generate(width, height, data);
 
     stbi_image_free(data);
@@ -44,12 +44,14 @@ Texture2D ResourceManager::loadTextureFromPath(const char* texturePath, bool alp
     return texture;
 }
 
-Shader ResourceManager::loadShaderFromPath(const char *vShaderPath, const char *fShaderPath) {
+Shader ResourceManager::loadShaderFromPath(const std::string& vShaderPath, const std::string& fShaderPath) {
 
     std::string vertexCode;
     std::string fragmentCode;
-    std::ifstream vertShaderFile(vShaderPath);
-    std::ifstream fragShaderFile(fShaderPath);
+    std::ifstream vertShaderFile("C:/Users/tyler/Projects/renderer/Assets/Shaders/" + vShaderPath);
+    std::ifstream fragShaderFile("C:/Users/tyler/Projects/renderer/Assets/Shaders/" + fShaderPath);
+
+
     vertShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
     fragShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
 
