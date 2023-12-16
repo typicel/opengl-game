@@ -1,5 +1,9 @@
 #include <memory>
 #include <iostream>
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+
 #include "include/Game.h"
 #include "include/ResourceManager.h"
 
@@ -43,13 +47,9 @@ void Game::Render() {
     float timeStep = 1.f / 60.f;
     int32_t velocityIterations = 6;
     int32_t positionIterations = 6;
-
     this->world.Step(timeStep, velocityIterations, positionIterations);
 
-    m_debugDraw.DrawRectangle(0.f, 0.f, 100.f, 100.f);
-    m_debugDraw.DrawRectangle(width/2, height/2, 100.f, 100.f);
-    m_debugDraw.DrawRectangle(width-100, height-100, 100.f, 100.f);
-
+    ImGui::Text("Hello world!");
     // Render all entities on the screen, do other stuff here too, like handle input and such
     for(auto entity: m_Entities) {
         m_Renderer->DrawSprite(*entity);
