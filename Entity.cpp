@@ -27,7 +27,15 @@ Entity::Entity(b2World& world, glm::vec2 pos, glm::vec2 size, Texture2D sprite, 
     physicsBody->CreateFixture(&fixtureDef);
 }
 
-void Entity::Move(glm::vec2 value) {
-    this->Position += value;
+glm::vec2 Entity::GetPosition() {
+    return glm::vec2(this->physicsBody->GetPosition().x - (this->Size.x/2), this->physicsBody->GetPosition().y - (this->Size.y/2));
+}
+
+void Entity::SetPosition(glm::vec2 value) {
+    this->physicsBody->SetTransform(b2Vec2(value.x + (this->Size.x/2), value.y + (this->Size.y/2)), this->physicsBody->GetAngle());
+}
+
+void Entity::SetColor(glm::vec3 color) {
+    this->Color = color;
 }
 
