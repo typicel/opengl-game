@@ -19,6 +19,12 @@ int main() {
     if(!glfwInit())
         return -1;
 
+    // force latest version
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MAJOR, 3 );
+    glfwWindowHint( GLFW_CONTEXT_VERSION_MINOR, 3 );
+    glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
+    glfwWindowHint( GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE );
+
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Renderer", nullptr, nullptr);
     if(!window) {
         glfwTerminate();
@@ -28,11 +34,13 @@ int main() {
     glfwMakeContextCurrent(window);
     gladLoadGL();
 
+    std::cout << glGetString(GL_VERSION) << std::endl;
+
     // ImGui setup
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGui_ImplGlfw_InitForOpenGL(window, true);
-    ImGui_ImplOpenGL3_Init("#version 330 core");
+    ImGui_ImplOpenGL3_Init("#version 410 core");
 
     Game game(WIDTH, HEIGHT, window);
     while(!glfwWindowShouldClose(window)) {

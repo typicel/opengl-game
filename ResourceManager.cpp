@@ -35,8 +35,15 @@ Texture2D ResourceManager::loadTextureFromPath(const std::string& texturePath, b
         texture.ImageFormat = GL_RGBA;
     }
 
+    // Eventually fix this, place all assets in a consistent folder to work across devices
+#if WIN32
+    std::string full_path = "C:/Users/tyler/Projects/renderer/Assets/Shaders/" + texturePath;
+#elif __APPLE__
+    std::string full_path = "/Users/enzo/Desktop/opengl-game/Assets/Sprites/" + texturePath;
+#endif
+
     int width, height, nrChannels;
-    unsigned char* data = stbi_load(texturePath.c_str(), &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load(full_path.c_str(), &width, &height, &nrChannels, 0);
     texture.Generate(width, height, data);
 
     stbi_image_free(data);
@@ -48,28 +55,26 @@ Shader ResourceManager::loadShaderFromPath(const std::string& vShaderPath, const
 
     std::string vertexCode;
     std::string fragmentCode;
+
+    // Eventually fix this, place all assets in a consistent folder to work across devices
+#if WIN32
     std::ifstream vertShaderFile("C:/Users/tyler/Projects/renderer/Assets/Shaders/" + vShaderPath);
     std::ifstream fragShaderFile("C:/Users/tyler/Projects/renderer/Assets/Shaders/" + fShaderPath);
+#elif __APPLE__
+    std::ifstream vertShaderFile("/Users/enzo/Desktop/opengl-game/Assets/Shaders/" + vShaderPath);
+    std::ifstream fragShaderFile("/Users/enzo/Desktop/opengl-game/Assets/Shaders/" + fShaderPath);
+#endif
 
+    std::stringstream vStream, fStream;
 
-    vertShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
-    fragShaderFile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+    vStream << vertShaderFile.rdbuf();
+    fStream << fragShaderFile.rdbuf();
 
-    try {
-        std::stringstream vStream, fStream;
+    vertShaderFile.close();
+    fragShaderFile.close();
 
-        vStream << vertShaderFile.rdbuf();
-        fStream << fragShaderFile.rdbuf();
-
-        vertShaderFile.close();
-        fragShaderFile.close();
-
-        vertexCode = vStream.str();
-        fragmentCode = fStream.str();
-    } catch (std::exception e)
-    {
-        std::cout << "Shader | Could not read one or more files" << std::endl;
-    }
+    vertexCode = vStream.str();
+    fragmentCode = fStream.str();
 
     const char* vShaderCode = vertexCode.c_str();
     const char* fShaderCode = fragmentCode.c_str();

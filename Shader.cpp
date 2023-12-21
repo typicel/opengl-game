@@ -42,7 +42,7 @@ Shader::Shader(const char *vShaderCode, const char *fShaderCode) {
     if(!success)
     {
         GLCall(glGetProgramInfoLog(m_shaderId, 512, NULL, infoLog));
-        std::cout << "Shader | Shader compilation error: " << infoLog << std::endl;
+        std::cout << "Shader program compilation error | " << infoLog << std::endl;
     }
 
     std::cout << "Shader | Shader program loaded and linked" << std::endl;

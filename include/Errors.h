@@ -1,10 +1,17 @@
 #pragma once
-
 #include <iostream>
-#define ASSERT(x) if (!(x))  __debugbreak();
-#define GLCall(x) GLClearError();\
-    x;\
-    ASSERT(GLLogCall())
+
+#if WIN32
+    #define ASSERT(x) if (!(x))  __debugbreak();
+    #define GLCall(x) GLClearError();\
+        x;\
+        ASSERT(GLLogCall())
+#elif __APPLE__
+    #define ASSERT(x) if (!(x))  __builtin_trap();
+    #define GLCall(x) GLClearError();\
+        x;\
+        ASSERT(GLLogCall())
+#endif
 
 static void GLClearError() {
     while(glGetError() != GL_NO_ERROR);

@@ -11,7 +11,7 @@ Game::Game(int width, int height, GLFWwindow* window) : m_Window(window), world(
     // Load shader for SpriteRenderer
     this->m_Renderer = std::make_shared<SpriteRenderer>( "sprite.vert", "sprite.frag", width, height);
     // Load all game entities
-    Texture2D nugget_texture = ResourceManager::LoadTexture("C:/Users/tyler/Projects/renderer/Assets/Sprites/nugglet.png", "nugglet", true);
+    Texture2D nugget_texture = ResourceManager::LoadTexture("nugglet.png", "nugglet", true);
     auto nugget = new Entity(world, glm::vec2(100.0f, 0.0f), glm::vec2(50.0f, 50.0f), nugget_texture, false,glm::vec3(0.5f, 0.f, 0.5));
     this->m_Entities.push_back(nugget);
 
