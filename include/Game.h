@@ -28,4 +28,6 @@ private:
     std::shared_ptr<SpriteRenderer> m_Renderer;
 
     DebugDraw m_debugDraw;
+
+    void ShowDebugInfo(Entity entity, int i);
 };
